@@ -1,0 +1,62 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<title>Traceur GPS - Application mobile</title>
+		<style type="text/css">
+			* 				{ 	font-family : Arial,Geneva,sans-serif;  }
+			table			{	border-collapse: collapse; width: 100%; }
+			.title			{	color:#000000; background-color: #A7C942; 	  	padding:3px 7px 2px 7px; 	border:1px solid #98bf21; 	text-align:center; font-size:2em;  }
+			.opt1			{	color:#000000; background-color: #ffffff;	  	padding:3px 7px 2px 7px; 	border:1px solid #98bf21;	}
+			.opt2			{	color:#000000; background-color: #EAF2D3;	 	padding:3px 7px 2px 7px; 	border:1px solid #98bf21; 	text-align:left;	}
+			button			{ 	width:20%; height: 2em; }
+		</style>
+	
+		<script type="text/javascript" src="phonegap.js"></script>
+		<script type="text/javascript">
+			
+			var echoPlugin = {
+					createEvent: function(msg, successCallback, errorCallback) {
+						cordova.exec(
+							successCallback, // success callback function
+							errorCallback, // error callback function
+							'Echo', // mapped to our native Java class called "Echo"
+							'echo', // with this action name
+							[{                  // and this array of custom arguments to create our entry
+								"msg": msg
+							}]
+						);
+					 }
+				};
+			// ---
+			// PhoneGap is ready
+			function onDeviceReady() {
+				// ---
+				var msg = "zzz";
+				var success = function() { alert("Success"); };
+				var error = function(message) { alert("Oopsie! " + message); };
+				echoPlugin.createEvent(msg, success, error);
+				// ---
+			}
+			// ---
+			function init() {
+				// Wait for PhoneGap to load
+				document.addEventListener("deviceready", onDeviceReady, false);
+				// onDeviceReady();
+			}
+			
+		</script>
+		
+	</head>
+	<body onLoad="init();">
+		<table>
+			<tr><td class="title">Test Echo from Java plugin</td></tr>
+			<tr>
+				<td class="opt1">
+					zzz
+				</td>
+			</tr>
+			<tr ><td class="opt1">	<div id="info_0">	&nbsp												</div>		</td></tr>
+		</table>	
+	</body>
+</html>
+ 

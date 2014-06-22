@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+    <plugin id="plugin.echo" >
+        		
+		 <platform name="android">
+		 
+			<source-file src="src/android/plugin/echo/Echo.java" target-dir="src/plugin/echo" />
+			 
+			<config-file target="config.xml" parent="/*">
+				<feature name="Echo">
+					<param name="android-package" value="plugin.echo.Echo"/>
+				</feature>
+			</config-file>
+			
+		</platform>
+		
+    </plugin>
+
